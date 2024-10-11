@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "rest_framework",
     "user",
+    "planetarium_api",
 ]
 
 MIDDLEWARE = [
