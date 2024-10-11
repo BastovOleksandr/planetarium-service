@@ -13,3 +13,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = UserManager()
+
+    def __str__(self):
+        return (
+            f"First name: {self.first_name}\n"
+            f"Last name: {self.last_name}\n"
+            f"Email: {self.email}"
+        )
