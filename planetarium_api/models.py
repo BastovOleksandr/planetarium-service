@@ -44,9 +44,11 @@ def astronomy_show_image_file_path(instance: "AstronomyShow", filename):
 
 class AstronomyShow(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     themes = models.ManyToManyField(ShowTheme, related_name="astronomy_shows")
-    image = models.ImageField(null=True, upload_to=astronomy_show_image_file_path)
+    image = models.ImageField(
+        null=True, blank=True, upload_to=astronomy_show_image_file_path
+    )
 
     class Meta:
         ordering = (Lower("title"),)
@@ -81,7 +83,10 @@ class Reservation(models.Model):
         ordering = ("-created_at",)
 
     def __str__(self):
-        return f"Reservation by {self.user.email}. Created at: {self.created_at}"
+        return (
+            f"Reservation by {self.user.email}. "
+            f'Created at: {self.created_at.strftime("%Y-%m-%d %H:%M:%S")}'
+        )
 
 
 class Ticket(models.Model):
