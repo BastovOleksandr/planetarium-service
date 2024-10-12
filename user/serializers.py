@@ -6,7 +6,14 @@ from rest_framework import serializers
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ("id", "email", "password", "is_staff")
+        fields = (
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "password",
+            "is_staff",
+        )
         read_only_fields = (
             "id",
             "is_staff",
@@ -15,8 +22,8 @@ class UserSerializer(serializers.ModelSerializer):
             "password": {
                 "write_only": True,
                 "min_length": 5,
-                "style": {"input type": "password"},
-                "label": _("password"),
+                "style": {"input_type": "password"},
+                "label": _("Password"),
             }
         }
 
