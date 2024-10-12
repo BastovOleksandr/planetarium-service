@@ -51,6 +51,12 @@ class AstronomyShow(models.Model):
     class Meta:
         ordering = (Lower("title"),)
 
+    def delete(self, *args, **kwargs):
+        if self.image:
+            if os.path.isfile(self.image.path):
+                os.remove(self.image.path)
+        super().delete(*args, **kwargs)
+
     def __str__(self):
         return self.title
 
