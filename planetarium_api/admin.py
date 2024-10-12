@@ -1,16 +1,19 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 
 from planetarium_api.models import (
     PlanetariumDome,
     ShowTheme,
     AstronomyShow,
     ShowSession,
-    Reservation,
     Ticket,
+    Reservation,
 )
 
-admin.site.register(PlanetariumDome)
+admin.site.unregister(Group)
+
 admin.site.register(ShowTheme)
+admin.site.register(PlanetariumDome)
 admin.site.register(AstronomyShow)
 admin.site.register(ShowSession)
 admin.site.register(Ticket)
@@ -22,5 +25,5 @@ class TicketInLine(admin.TabularInline):
 
 
 @admin.register(Reservation)
-class OrderAdmin(admin.ModelAdmin):
+class ReservationAdmin(admin.ModelAdmin):
     inlines = (TicketInLine,)
