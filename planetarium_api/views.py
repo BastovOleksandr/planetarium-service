@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from django.db.models import F, Count
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework import viewsets, mixins, status
 from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
@@ -97,12 +99,27 @@ class AstronomyShowViewSet(
     def upload_image(self, request, pk=None):
         astronomy_show = self.get_object()
         serializer = self.get_serializer(astronomy_show, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                "themes",
+                type={"type": "list", "items": {"type": "number"}},
+                description="Filter by theme id (ex. ?themes=2,3)",
+            ),
+            OpenApiParameter(
+                "title",
+                type=OpenApiTypes.STR,
+                description="Filter by astronomy "
+                            "show title (ex. ?title=cosmos)",
+            ),
+        ]
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
 
 
 class ShowSessionViewSet(viewsets.ModelViewSet):
@@ -121,7 +138,7 @@ class ShowSessionViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         date = self.request.query_params.get("date")
-        astronomy_show_id_str = self.request.query_params.get("astronomy_show")
+        astronomy_show_id = self.request.query_params.get("show")
 
         queryset = self.queryset
 
@@ -129,9 +146,9 @@ class ShowSessionViewSet(viewsets.ModelViewSet):
             date = datetime.strptime(date, "%Y-%m-%d").date()
             queryset = queryset.filter(show_time__date=date)
 
-        if astronomy_show_id_str:
+        if astronomy_show_id:
             queryset = queryset.filter(
-                astronomy_show_id=int(astronomy_show_id_str)
+                astronomy_show_id=int(astronomy_show_id)
             )
 
         return queryset
@@ -145,21 +162,23 @@ class ShowSessionViewSet(viewsets.ModelViewSet):
 
         return ShowSessionSerializer
 
-    @action(
-        methods=["POST"],
-        detail=True,
-        url_path="upload-image",
-        permission_classes=[IsAdminUser],
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                "show",
+                type=OpenApiTypes.INT,
+                description="Filter by astronomy show id (ex. ?show=2)",
+            ),
+            OpenApiParameter(
+                "date",
+                type=OpenApiTypes.DATE,
+                description="Filter by date of "
+                            "show session (ex. ?date=2024-10-25)",
+            ),
+        ]
     )
-    def upload_image(self, request, pk=None):
-        astronomy_show = self.get_object()
-        serializer = self.get_serializer(astronomy_show, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
 
 
 class ReservationPagination(PageNumberPagination):
