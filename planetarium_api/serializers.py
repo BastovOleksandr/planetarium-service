@@ -92,7 +92,7 @@ class ShowSessionListSerializer(ShowSessionSerializer):
 
 class TicketSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
-        data = super(TicketSerializer, self).validate(attrs=attrs)
+        data = super().validate(attrs=attrs)
         Ticket.validate_row_seat(
             attrs["seat"],
             attrs["row"],
