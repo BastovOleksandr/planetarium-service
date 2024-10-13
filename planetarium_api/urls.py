@@ -11,9 +11,9 @@ from planetarium_api.views import (
 
 router = routers.DefaultRouter()
 router.register("themes", ShowThemeViewSet)
-router.register("planetarium_domes", PlanetariumDomeViewSet)
-router.register("astronomy_shows", AstronomyShowViewSet)
-router.register("show_sessions", ShowSessionViewSet)
+router.register("planetarium-domes", PlanetariumDomeViewSet)
+router.register("astronomy-shows", AstronomyShowViewSet)
+router.register("show-sessions", ShowSessionViewSet)
 router.register("reservations", ReservationViewSet)
 
 urlpatterns = [path("", include(router.urls))]
