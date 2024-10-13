@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+import os
 import sys
 from datetime import timedelta
 from pathlib import Path
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "rest_framework",
+    "drf_spectacular",
     "user",
     "planetarium_api",
 ]
@@ -151,3 +153,8 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=3),
     "ROTATE_REFRESH_TOKENS": False,
 }
+
+# additional path to find fixtures
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, "planetarium_service", "fixtures"),
+]
