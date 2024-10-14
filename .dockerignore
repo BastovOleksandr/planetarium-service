@@ -1,0 +1,14 @@
+.git/
+.idea/
+.venv/
+venv/
+**/__pycache__/
+media/
+.dockerignore
+.env
+.env.sample
+.gitignore
+*.sqlite3
+docker-compose.yaml
+Dockerfile
+README.md
