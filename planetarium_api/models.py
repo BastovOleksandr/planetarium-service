@@ -4,6 +4,7 @@ import uuid
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
 from django.utils.text import slugify
 
@@ -45,13 +46,14 @@ def astronomy_show_image_file_path(instance: "AstronomyShow", filename):
 class AstronomyShow(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    themes = models.ManyToManyField(ShowTheme, related_name="astronomy_shows")
+    themes = models.ManyToManyField(ShowTheme)
     image = models.ImageField(
         null=True, blank=True, upload_to=astronomy_show_image_file_path
     )
 
     class Meta:
         ordering = (Lower("title"),)
+        default_related_name = "astronomy_shows"
 
     def delete(self, *args, **kwargs):
         if self.image:
@@ -65,11 +67,16 @@ class AstronomyShow(models.Model):
 
 class ShowSession(models.Model):
     show_time = models.DateTimeField()
-    astronomy_show = models.ForeignKey(AstronomyShow, on_delete=models.CASCADE)
-    planetarium_dome = models.ForeignKey(PlanetariumDome, on_delete=models.CASCADE)
+    astronomy_show = models.ForeignKey(
+        AstronomyShow, on_delete=models.CASCADE
+    )
+    planetarium_dome = models.ForeignKey(
+        PlanetariumDome, on_delete=models.CASCADE
+    )
 
     class Meta:
         ordering = ("-show_time",)
+        default_related_name = "show_sessions"
 
     def __str__(self):
         return f"{self.astronomy_show.title} at {self.show_time}"
@@ -77,10 +84,13 @@ class ShowSession(models.Model):
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+    )
 
     class Meta:
         ordering = ("-created_at",)
+        default_related_name = "reservations"
 
     def __str__(self):
         return (
@@ -92,23 +102,27 @@ class Reservation(models.Model):
 class Ticket(models.Model):
     row = models.IntegerField()
     seat = models.IntegerField()
-    show_session = models.ForeignKey(
-        ShowSession, on_delete=models.CASCADE, related_name="tickets"
-    )
-    reservation = models.ForeignKey(
-        Reservation, on_delete=models.CASCADE, related_name="tickets"
-    )
+    show_session = models.ForeignKey(ShowSession, on_delete=models.CASCADE)
+    reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ("show_session", "row", "seat")
+        default_related_name = "tickets"
         ordering = (
             "row",
             "seat",
         )
+        constraints = [
+            UniqueConstraint(
+                fields=["show_session", "row", "seat"],
+                name="unique_show_session_row_seat",
+            )
+        ]
 
     @staticmethod
     def validate_row_seat(seat: int, row: int, show_session, error_to_raise):
-        for ticket_attr_value, ticket_attr_name, planetarium_dome_attr_name in [
+        for (
+            ticket_attr_value, ticket_attr_name, planetarium_dome_attr_name
+        ) in [
             (row, "row", "rows"),
             (seat, "seat", "seats_in_row"),
         ]:
@@ -133,13 +147,10 @@ class Ticket(models.Model):
     def save(
         self,
         *args,
-        force_insert=False,
-        force_update=False,
-        using=None,
-        update_fields=None,
+        **kwargs
     ):
         self.full_clean()
-        super().save(force_insert, force_update, using, update_fields)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.show_session}:\n(row: {self.row}, seat: {self.seat})"
