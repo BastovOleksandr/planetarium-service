@@ -1,6 +1,7 @@
 from django.db import transaction
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
+from rest_framework.validators import UniqueTogetherValidator
 
 from planetarium_api.models import (
     ShowTheme,
@@ -42,8 +43,8 @@ class AstronomyShowSerializer(serializers.ModelSerializer):
 
 
 class AstronomyShowDetailSerializer(AstronomyShowSerializer):
-    themes = ShowThemeSerializer(many=True, read_only=True)
-    image = serializers.CharField(read_only=True)
+    themes = ShowThemeSerializer(many=True)
+    image = serializers.CharField()
 
     class Meta:
         model = AstronomyShow
@@ -64,17 +65,17 @@ class ShowSessionSerializer(serializers.ModelSerializer):
 
 class ShowSessionListSerializer(ShowSessionSerializer):
     astronomy_show_title = serializers.CharField(
-        source="astronomy_show.title", read_only=True
+        source="astronomy_show.title"
     )
     planetarium_dome_name = serializers.CharField(
-        source="planetarium_dome.name", read_only=True
+        source="planetarium_dome.name"
     )
     planetarium_dome_capacity = serializers.IntegerField(
-        source="planetarium_dome.capacity", read_only=True
+        source="planetarium_dome.capacity"
     )
-    tickets_available = serializers.IntegerField(read_only=True)
+    tickets_available = serializers.IntegerField()
     astronomy_show_image = AstronomyShowImageSerializer(
-        source="astronomy_show.image", many=False, read_only=True
+        source="astronomy_show.image"
     )
 
     class Meta:
@@ -104,10 +105,16 @@ class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ticket
         fields = ("id", "row", "seat", "show_session")
+        validators = [
+            UniqueTogetherValidator(
+                queryset=Ticket.objects.all(),
+                fields=["show_session", "row", "seat"]
+            )
+        ]
 
 
 class TicketListSerializer(TicketSerializer):
-    show_session = ShowSessionListSerializer(many=False, read_only=True)
+    show_session = ShowSessionListSerializer()
 
 
 class TicketSeatsSerializer(TicketSerializer):
@@ -117,9 +124,9 @@ class TicketSeatsSerializer(TicketSerializer):
 
 
 class ShowSessionDetailSerializer(ShowSessionSerializer):
-    astronomy_show = AstronomyShowListSerializer(many=False, read_only=True)
-    planetarium_dome = PlanetariumDomeSerializer(many=False, read_only=True)
-    taken_places = TicketSeatsSerializer(source="tickets", many=True, read_only=True)
+    astronomy_show = AstronomyShowListSerializer()
+    planetarium_dome = PlanetariumDomeSerializer()
+    taken_places = TicketSeatsSerializer(source="tickets", many=True)
 
     class Meta:
         model = ShowSession
@@ -133,7 +140,7 @@ class ShowSessionDetailSerializer(ShowSessionSerializer):
 
 
 class ReservationSerializer(serializers.ModelSerializer):
-    tickets = TicketSerializer(many=True, read_only=False, allow_empty=False)
+    tickets = TicketSerializer(many=True, read_only=False)
 
     class Meta:
         model = Reservation
@@ -149,4 +156,4 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 
 class ReservationListSerializer(ReservationSerializer):
-    tickets = TicketListSerializer(many=True, read_only=True)
+    tickets = TicketListSerializer(many=True)
