@@ -1,0 +1,739 @@
+[
+  {
+    "model": "user.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$xASu2UPfxUseRY0JMJXs2B$/V7ZBHi2uTlplRWdWPiT54jb0S2Fwep/wpIUXuGDbzg=",
+      "last_login": "2024-10-12T18:43:30.526Z",
+      "is_superuser": true,
+      "first_name": "Admin first name",
+      "last_name": "Admin last name",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-10-12T10:36:45.899Z",
+      "email": "admin@admin.com",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$DQr5kAFibGF76JiLuHVqRE$mxy8LIofnnayNvGJr6qZGnIMTtMroO8ZdS2tMijimwQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "User first name",
+      "last_name": "User last name",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-10-12T14:07:14Z",
+      "email": "user@user.com",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 1,
+    "fields": {
+      "name": "SkyView Planetarium",
+      "rows": 8,
+      "seats_in_row": 10
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 2,
+    "fields": {
+      "name": "Cosmos Dome",
+      "rows": 20,
+      "seats_in_row": 25
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 3,
+    "fields": {
+      "name": "Stellar Observatory",
+      "rows": 5,
+      "seats_in_row": 10
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 4,
+    "fields": {
+      "name": "Galactic Gateway",
+      "rows": 12,
+      "seats_in_row": 22
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 5,
+    "fields": {
+      "name": "Astral Theater",
+      "rows": 14,
+      "seats_in_row": 18
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 6,
+    "fields": {
+      "name": "Celestial Sphere",
+      "rows": 5,
+      "seats_in_row": 8
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 7,
+    "fields": {
+      "name": "Starry Night Dome",
+      "rows": 8,
+      "seats_in_row": 12
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 8,
+    "fields": {
+      "name": "Universe Explorer",
+      "rows": 18,
+      "seats_in_row": 26
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 9,
+    "fields": {
+      "name": "Nebula Nexus",
+      "rows": 7,
+      "seats_in_row": 9
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 10,
+    "fields": {
+      "name": "Milky Way Dome",
+      "rows": 10,
+      "seats_in_row": 25
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 1,
+    "fields": {
+      "name": "Journey Through the Skies"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 2,
+    "fields": {
+      "name": "Constellation Quest"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 3,
+    "fields": {
+      "name": "Wonders of the Night Sky"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 4,
+    "fields": {
+      "name": "Cosmic Odyssey"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 5,
+    "fields": {
+      "name": "Mysteries of the Universe"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 6,
+    "fields": {
+      "name": "Galaxy Exploration"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 7,
+    "fields": {
+      "name": "Stellar Evolution"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 8,
+    "fields": {
+      "name": "Birth of Stars"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 9,
+    "fields": {
+      "name": "Deep Space Discoveries"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 10,
+    "fields": {
+      "name": "Exploring the Solar System"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 11,
+    "fields": {
+      "name": "Beyond the Milky Way"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 12,
+    "fields": {
+      "name": "Gateway to the Galaxies"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 13,
+    "fields": {
+      "name": "Interstellar Journeys"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 14,
+    "fields": {
+      "name": "Astral Wonders"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 15,
+    "fields": {
+      "name": "Tales of the Stars"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 16,
+    "fields": {
+      "name": "Cosmic Phenomena"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 17,
+    "fields": {
+      "name": "Astral Adventures"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 18,
+    "fields": {
+      "name": "Orbital Wonders"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 19,
+    "fields": {
+      "name": "The Celestial Dance"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 20,
+    "fields": {
+      "name": "Exploring the Cosmos"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 21,
+    "fields": {
+      "name": "Night of a Thousand Stars"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 22,
+    "fields": {
+      "name": "Legends of the Night Sky"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 23,
+    "fields": {
+      "name": "Under the Starry Canopy"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 24,
+    "fields": {
+      "name": "Exploring the Universe"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 25,
+    "fields": {
+      "name": "Voyage Through Space"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 26,
+    "fields": {
+      "name": "Frontiers of the Universe"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 27,
+    "fields": {
+      "name": "The Birth of Nebulae"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 28,
+    "fields": {
+      "name": "Nebula Nexus Adventures"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 29,
+    "fields": {
+      "name": "Colors of the Cosmos"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 30,
+    "fields": {
+      "name": "The Heart of the Milky Way"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 31,
+    "fields": {
+      "name": "Milky Way Mysteries"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 32,
+    "fields": {
+      "name": "Exploring Our Galaxy"
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 1,
+    "fields": {
+      "title": "Astral astronomy show",
+      "description": "description for Astral astronomy show",
+      "image": "uploads/astronomy_shows/astronomy-show-1-e4dad6b9-9672-4d08-abcd-9366acb78eea.jpg",
+      "themes": [
+        17,
+        14
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 2,
+    "fields": {
+      "title": "Milky way astronomy show",
+      "description": "description for Milky way astronomy show",
+      "image": "uploads/astronomy_shows/astronomy-show-2-4a6d2059-dc95-4a59-8853-b3dc2a6f3069.jpg",
+      "themes": [
+        11,
+        8
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 3,
+    "fields": {
+      "title": "Cosmos astronomy show",
+      "description": "description Cosmos astronomy show",
+      "image": "uploads/astronomy_shows/astronomy-show-3-00491ecc-888d-445c-bee2-e2dde60599f3.jpg",
+      "themes": [
+        29,
+        2,
+        4,
+        16
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 4,
+    "fields": {
+      "title": "Astronomy show 4",
+      "description": "description Astronomy show 4",
+      "image": "",
+      "themes": [
+        17,
+        11
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 5,
+    "fields": {
+      "title": "Astronomy show 5",
+      "description": "description Astronomy show 5",
+      "image": "",
+      "themes": [
+        11,
+        29
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 6,
+    "fields": {
+      "title": "Astronomy show 6",
+      "description": "description Astronomy show 6",
+      "image": "",
+      "themes": [
+        17,
+        29
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 7,
+    "fields": {
+      "title": "Astronomy show 7",
+      "description": "description Astronomy show 7",
+      "image": "",
+      "themes": [
+        17,
+        11,
+        29
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 8,
+    "fields": {
+      "title": "Astronomy show 8",
+      "description": "description (without show sessions)",
+      "image": "",
+      "themes": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 1,
+    "fields": {
+      "show_time": "2024-10-26T18:00:00Z",
+      "astronomy_show": 1,
+      "planetarium_dome": 5
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 2,
+    "fields": {
+      "show_time": "2024-10-25T15:00:00Z",
+      "astronomy_show": 2,
+      "planetarium_dome": 10
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 3,
+    "fields": {
+      "show_time": "2024-10-24T16:30:00Z",
+      "astronomy_show": 3,
+      "planetarium_dome": 2
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 4,
+    "fields": {
+      "show_time": "2024-10-23T10:00:00Z",
+      "astronomy_show": 4,
+      "planetarium_dome": 6
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 5,
+    "fields": {
+      "show_time": "2024-10-22T09:30:00Z",
+      "astronomy_show": 5,
+      "planetarium_dome": 4
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 6,
+    "fields": {
+      "show_time": "2024-10-21T20:00:00Z",
+      "astronomy_show": 6,
+      "planetarium_dome": 9
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 7,
+    "fields": {
+      "show_time": "2024-10-21T18:00:00Z",
+      "astronomy_show": 7,
+      "planetarium_dome": 1
+    }
+  },
+  {
+    "model": "planetarium_api.reservation",
+    "pk": 1,
+    "fields": {
+      "created_at": "2024-10-12T14:23:25.150Z",
+      "user": 1
+    }
+  },
+  {
+    "model": "planetarium_api.reservation",
+    "pk": 2,
+    "fields": {
+      "created_at": "2024-10-11T14:24:20.000Z",
+      "user": 2
+    }
+  },
+  {
+    "model": "planetarium_api.reservation",
+    "pk": 3,
+    "fields": {
+      "created_at": "2024-10-10T14:24:59.394Z",
+      "user": 2
+    }
+  },
+  {
+    "model": "planetarium_api.reservation",
+    "pk": 4,
+    "fields": {
+      "created_at": "2024-10-12T14:29:37.912Z",
+      "user": 2
+    }
+  },
+  {
+    "model": "planetarium_api.reservation",
+    "pk": 5,
+    "fields": {
+      "created_at": "2024-10-12T14:30:17.412Z",
+      "user": 2
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 1,
+    "fields": {
+      "row": 1,
+      "seat": 1,
+      "show_session": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 2,
+    "fields": {
+      "row": 1,
+      "seat": 2,
+      "show_session": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 3,
+    "fields": {
+      "row": 1,
+      "seat": 3,
+      "show_session": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 4,
+    "fields": {
+      "row": 2,
+      "seat": 1,
+      "show_session": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 5,
+    "fields": {
+      "row": 2,
+      "seat": 2,
+      "show_session": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 6,
+    "fields": {
+      "row": 2,
+      "seat": 3,
+      "show_session": 1,
+      "reservation": 1
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 7,
+    "fields": {
+      "row": 3,
+      "seat": 1,
+      "show_session": 1,
+      "reservation": 2
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 8,
+    "fields": {
+      "row": 3,
+      "seat": 2,
+      "show_session": 1,
+      "reservation": 2
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 9,
+    "fields": {
+      "row": 3,
+      "seat": 3,
+      "show_session": 1,
+      "reservation": 2
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 10,
+    "fields": {
+      "row": 1,
+      "seat": 1,
+      "show_session": 2,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 11,
+    "fields": {
+      "row": 1,
+      "seat": 2,
+      "show_session": 2,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 12,
+    "fields": {
+      "row": 1,
+      "seat": 3,
+      "show_session": 2,
+      "reservation": 3
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 13,
+    "fields": {
+      "row": 1,
+      "seat": 1,
+      "show_session": 3,
+      "reservation": 4
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 14,
+    "fields": {
+      "row": 1,
+      "seat": 1,
+      "show_session": 4,
+      "reservation": 4
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 15,
+    "fields": {
+      "row": 1,
+      "seat": 1,
+      "show_session": 5,
+      "reservation": 4
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 16,
+    "fields": {
+      "row": 2,
+      "seat": 2,
+      "show_session": 3,
+      "reservation": 5
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 17,
+    "fields": {
+      "row": 2,
+      "seat": 2,
+      "show_session": 4,
+      "reservation": 5
+    }
+  },
+  {
+    "model": "planetarium_api.ticket",
+    "pk": 18,
+    "fields": {
+      "row": 2,
+      "seat": 2,
+      "show_session": 5,
+      "reservation": 5
+    }
+  }
+]
